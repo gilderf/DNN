@@ -12,15 +12,8 @@ parfor iter=1:sum(TestData);
     end
     
     W = resizeimage(Test(:,:,it,num),N,AN);
-    W = parpropagation(W, z(1), k, U);
-    for iter2=1:length(z)-1
-        W = parpropagation(W.*DOES(:,:,iter2), z(iter2+1)-z(iter2), k, U);
-    end
+    [tmp,W] = recognize(X,Y,W,z,DOES,k,coords,G_size,U)
 
-    tmp = zeros(ln,1);
-    for nt = 1:ln
-        tmp(nt) = get_max_intensity(X, Y, W, coords(nt, 1), coords(nt, 2), G_size);
-    end
     [~, argmax] = max(tmp);
     ttt = zeros(ln);
     ttt(argmax, num) = 1;

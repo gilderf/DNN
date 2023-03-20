@@ -34,7 +34,7 @@ imagesc([-B B], [-B B], angle(DOES2));
 
 num = randi([1 ln]);
 W = resizeimage(Test(:,:,randi([1 TestData(num)]),num),N,AN);
-[tmp, F] = recognize(W);
+[tmp, F] = recognize(X,Y,W,z,DOES,k,coords,G_size,U);
 tmp = tmp./sum(tmp);
 gr = gray;
 gr = gr(end:-1:1, :);

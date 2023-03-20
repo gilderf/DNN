@@ -6,12 +6,12 @@ fig = figure;
 zones = [0 z];
 for zone=1:length(z)
     for zz = zones(zone):1:zones(zone+1)
-        imagesc(x, x, abs(propagation(W, zz - zones(zone))), [0 0.03]);
+        imagesc(x, x, abs(propagation(W, zz - zones(zone), k, U)), [0 0.03]);
         axis xy;
         title(['z = ' num2str(zz)]);
         pause(0.01);
     end
-    W = propagation(W, zones(zone+1)-zones(zone));
+    W = propagation(W, zones(zone+1)-zones(zone), k, U);
     if zone ~= length(z)
         W = W.*DOES(:,:,zone);
     end

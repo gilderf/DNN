@@ -1,13 +1,11 @@
-global metric lambda k AN N A B X Y nums coords DOES z U G_size;
 
-metric = 0.001; % m -> mm
-lambda = 0.532e-6/metric; % mm
+if exist('metric', 'var') ~= 1; metric = 0.001; end % m -> mm
+if exist('lambda', 'var') ~= 1; lambda = 0.532e-6/metric; end  % mm
 k = 2*pi/lambda;
 
-AN = 28*2;
-N = 512;
-
-A = 36e-6*28/2/metric;  % half size figure
+if exist('AN', 'var') ~= 1; AN = 28*2; end
+if exist('N', 'var') ~= 1; N = 512; end
+if exist('A', 'var') ~= 1; A = 36e-6*28/2/metric; end % half size figure
 B = A*N/AN; % half full size area
 
 x = linspace(-B, B, N+1); x(end) = [];
@@ -27,9 +25,6 @@ aa = A*4;
 hh = aa; %aa*sqrt(3)/2;
 coords = [-aa hh; 0 hh; aa hh; -1.5*aa 0; -0.5*aa 0; 0.5*aa 0; 1.5*aa 0; -aa -hh; 0 -hh; aa -hh];
 G_size = A;
-
-z = [0.3 0.6]/metric;
-DOES = ones(N, N, length(z)-1);
 
 % path = 'D:/mnist/';
 load('D:/mnist/Train.mat');
