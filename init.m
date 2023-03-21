@@ -14,10 +14,12 @@ x = linspace(-B, B, N+1); x(end) = [];
 kx = linspace(-pi*N/2/B, pi*N/2/B, N+1); kx(end) = [];
 [Kx, Ky] = meshgrid(kx, kx);
 T = Kx.^2 + Ky.^2;
+U = zeros(N);
 U(1:N/2,1:N/2) = T(N/2+1:N,N/2+1:N);
 U(N/2+1:N,1:N/2) = T(1:N/2,N/2+1:N);
 U(1:N/2,N/2+1:N) = T(N/2+1:N,1:N/2);
 U(N/2+1:N,N/2+1:N) = T(1:N/2,1:N/2);
+U = sqrt(k^2 - U);
 
 nums = [0 1 2 3 4 5 6 7 8 9];
 ln = length(nums);

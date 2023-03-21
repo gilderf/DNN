@@ -23,7 +23,7 @@ for p=1:P
         axis square;
         axis xy;
 		subplot(1, 2, 2, 'align', 'position', [0.51, 0.02, 0.47, 0.96]);
-		imagesc(x, x, abs(F).^2);
+		imagesc(x, x, abs(F(:,:,end)).^2);
         set(gca,'xtick',[],'ytick',[]);
         axis square;
         axis xy;

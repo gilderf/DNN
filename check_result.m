@@ -19,7 +19,7 @@ parfor iter=1:sum(TestData);
     ttt(argmax, num) = 1;
     tabl1 = tabl1 + ttt;
 %     for nt = 1:ln
-%         tmp(nt) = get_energy(X, Y, W, coords(nt, 1), coords(nt, 2), G_size);
+%         tmp(nt) = get_energy(X, Y, W(:,:,end), coords(nt, 1), coords(nt, 2), G_size);
 %     end
     ttt(:,num) = tmp;
     tabl2 = tabl2 + ttt;
@@ -34,7 +34,7 @@ return
 
 %% accuracy table
 
-grad = 16;
+grad = 100;
 figure('position', [500 500 1200 700]);
 imagesc(nums, nums, tabl1./repmat(TestData, [ln, 1])*100, [0 100]);
 colormap([linspace(1, 32/255, grad)', linspace(1, 145/255, grad)', linspace(1, 201/255, grad)'])
@@ -48,7 +48,7 @@ return;
 
 %% intensity tabel
 
-grad = 16;
+grad = 100;
 figure('position', [500 500 1200 700]);
 imagesc(nums, nums, tabl2./repmat(sum(tabl2), [ln, 1])*100, [0 100]);
 colormap([linspace(1, 32/255, grad)', linspace(1, 201/255, grad)', linspace(1, 74/255, grad)'])
